@@ -3,559 +3,761 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rekapitulasi Penetapan NIPPPK Tahap II TA. 2024</title>
+    <title>Informasi PPPK Tahap II - Kanreg II BKN</title>
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Roboto -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap"
       rel="stylesheet"
     />
+
     <style>
       body {
-        font-family: "Inter", sans-serif;
+        font-family: "Roboto", sans-serif;
       }
-      /* Custom scrollbar for better aesthetics */
-      ::-webkit-scrollbar {
-        width: 8px;
+
+      /* Properti custom untuk animasi diagram lingkaran */
+      @property --p {
+        syntax: "<number>";
+        inherits: true;
+        initial-value: 0;
       }
-      ::-webkit-scrollbar-track {
-        background: #f1f1f1;
+
+      /* Animasi untuk diagram lingkaran */
+      .pie {
+        --p: 98.91; /* Persentase penyelesaian */
+        --b: 22px; /* Ketebalan diagram */
+        --c: #dc2626; /* Warna utama (merah) */
+        --w: 150px; /* Ukuran diagram */
+        width: var(--w);
+        aspect-ratio: 1;
+        position: relative;
+        display: inline-grid;
+        margin: 5px;
+        place-content: center;
+        font-size: 25px;
+        font-weight: bold;
+        animation: pie-animation 1s 1s both;
       }
-      ::-webkit-scrollbar-thumb {
-        background: #888;
-        border-radius: 10px;
+
+      .pie:before {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        inset: 0;
+        background: radial-gradient(farthest-side, var(--c) 98%, #0000)
+            top/var(--b) var(--b) no-repeat,
+          conic-gradient(var(--c) calc(var(--p) * 1%), #e5e7eb 0);
+        -webkit-mask: radial-gradient(
+          farthest-side,
+          #0000 calc(99% - var(--b)),
+          #000 calc(100% - var(--b))
+        );
+        mask: radial-gradient(
+          farthest-side,
+          #0000 calc(99% - var(--b)),
+          #000 calc(100% - var(--b))
+        );
       }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #555;
+
+      /* Styling untuk tabel di perangkat mobile */
+      @media (max-width: 768px) {
+        .responsive-table thead {
+          display: none;
+        }
+        .responsive-table tr {
+          display: block;
+          margin-bottom: 1rem;
+          border-bottom: 2px solid #ddd;
+          padding-bottom: 1rem;
+        }
+        .responsive-table td {
+          display: block;
+          text-align: right;
+          position: relative;
+          padding-left: 50%;
+          border-bottom: 1px dotted #ccc;
+        }
+        .responsive-table td:last-child {
+          border-bottom: 0;
+        }
+        .responsive-table td:before {
+          content: attr(data-label);
+          position: absolute;
+          left: 0;
+          width: 45%;
+          padding-left: 1rem;
+          font-weight: bold;
+          text-align: left;
+        }
       }
     </style>
   </head>
-  <body class="bg-gray-50 text-gray-800">
-    <div class="container mx-auto p-4 md:p-8">
-      <!-- Header Section -->
-      <header class="text-center mb-8">
-        <h1 class="text-3xl md:text-4xl font-bold text-gray-900">
-          Rekapitulasi Global Penetapan NIPPPK Tahap II TA. 2024
-        </h1>
-        <p class="text-gray-600 mt-2">
-          Wilayah Kerja Kantor Regional II BKN Surabaya
-        </p>
-        <p class="text-sm text-gray-500">
-          Data per 17 September 2025 | 11.08 WIB
-        </p>
+  <body class="bg-slate-50 text-slate-800">
+    <div class="container mx-auto p-4 md:p-8 max-w-6xl">
+      <!-- Header -->
+      <header class="flex justify-between items-center mb-8">
+        <div class="flex items-center space-x-3">
+          <svg
+            class="w-12 h-12 text-slate-700"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z"
+            />
+          </svg>
+          <div>
+            <h2 class="font-bold text-sm md:text-base text-slate-600">
+              BADAN KEPEGAWAIAN NEGARA
+            </h2>
+            <p class="text-xs md:text-sm text-slate-500">
+              KANTOR REGIONAL II SURABAYA
+            </p>
+          </div>
+        </div>
+        <div class="text-right">
+          <p class="font-bold text-sm md:text-lg text-red-600">BerAKHLAK</p>
+          <p class="text-xs md:text-sm text-slate-500">#banggamelayanibangsa</p>
+        </div>
       </header>
 
-      <!-- Global Summary Cards -->
-      <section
-        class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-4 mb-8 text-center"
-      >
-        <div class="bg-white p-4 rounded-lg shadow-md border border-gray-200">
-          <p class="text-sm font-semibold text-gray-500">Total Usulan</p>
-          <p class="text-2xl font-bold text-blue-600" id="total-usulan">
-            11.883
-          </p>
-        </div>
-        <div class="bg-white p-4 rounded-lg shadow-md border border-gray-200">
-          <p class="text-sm font-semibold text-gray-500">ACC</p>
-          <p class="text-2xl font-bold text-green-600" id="total-acc">11.717</p>
-        </div>
-        <div class="bg-white p-4 rounded-lg shadow-md border border-gray-200">
-          <p class="text-sm font-semibold text-gray-500">Proses</p>
-          <p class="text-2xl font-bold text-yellow-600" id="total-proses">50</p>
-        </div>
-        <div class="bg-white p-4 rounded-lg shadow-md border border-gray-200">
-          <p class="text-sm font-semibold text-gray-500">BTS</p>
-          <p class="text-2xl font-bold text-orange-600" id="total-bts">115</p>
-        </div>
-        <div class="bg-white p-4 rounded-lg shadow-md border border-gray-200">
-          <p class="text-sm font-semibold text-gray-500">TMS</p>
-          <p class="text-2xl font-bold text-red-600" id="total-tms">1</p>
-        </div>
-        <div class="bg-white p-4 rounded-lg shadow-md border border-gray-200">
-          <p class="text-sm font-semibold text-gray-500">Cetak SK</p>
-          <p class="text-2xl font-bold text-indigo-600" id="total-cetak-sk">
-            2.736
-          </p>
-        </div>
-        <div
-          class="bg-blue-600 text-white p-4 rounded-lg shadow-md col-span-2 md:col-span-1"
-        >
-          <p class="text-sm font-semibold">Selesai</p>
-          <p class="text-2xl font-bold" id="persen-selesai">98.60%</p>
-        </div>
-      </section>
-
-      <!-- Search and Table Section -->
-      <main
-        class="bg-white p-4 md:p-6 rounded-lg shadow-lg border border-gray-200"
-      >
-        <div class="mb-4">
-          <input
-            type="text"
-            id="searchInput"
-            placeholder="Cari nama instansi..."
-            class="w-full md:w-1/3 p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
-          />
-        </div>
-
-        <!-- Table Container -->
-        <div class="overflow-x-auto">
-          <div
-            class="hidden md:grid md:grid-cols-8 gap-4 p-4 bg-gray-100 rounded-t-lg font-semibold text-sm text-gray-700"
+      <!-- Judul Utama -->
+      <main>
+        <div class="text-center mb-8">
+          <h1
+            class="text-3xl md:text-5xl font-extrabold text-slate-800 leading-tight"
           >
-            <div class="col-span-2">Instansi</div>
-            <div>Proses</div>
-            <div>BTS</div>
-            <div>TMS</div>
-            <div>ACC</div>
-            <div>Total</div>
-            <div>% Selesai</div>
+            Rekapitulasi Global <br />
+            <span class="text-red-600"
+              >Penetapan Nomor Induk PPPK Tahap II TA. 2024</span
+            >
+          </h1>
+          <p class="mt-4 text-slate-500">
+            Data diperoleh pada 23 September 2025 | 13.10 WIB
+          </p>
+        </div>
+
+        <!-- Statistik Global -->
+        <div
+          class="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 mb-10"
+        >
+          <div
+            class="w-full md:w-auto grid grid-cols-2 sm:grid-cols-3 gap-4 text-center"
+          >
+            <div class="bg-white p-3 rounded-xl shadow-md border">
+              <p class="text-slate-500">Proses</p>
+              <p id="proses" class="text-2xl font-bold">0</p>
+            </div>
+            <div class="bg-white p-3 rounded-xl shadow-md border">
+              <p class="text-slate-500">BTS</p>
+              <p id="bts" class="text-2xl font-bold">0</p>
+            </div>
+            <div class="bg-white p-3 rounded-xl shadow-md border">
+              <p class="text-slate-500">TMS</p>
+              <p id="tms" class="text-2xl font-bold">0</p>
+            </div>
+            <div class="bg-white p-3 rounded-xl shadow-md border">
+              <p class="text-slate-500">ACC</p>
+              <p id="acc" class="text-2xl font-bold">0</p>
+            </div>
+            <div class="bg-white p-3 rounded-xl shadow-md border">
+              <p class="text-slate-500">Total</p>
+              <p id="total" class="text-2xl font-bold">0</p>
+            </div>
+            <div class="bg-white p-3 rounded-xl shadow-md border">
+              <p class="text-slate-500">Cetak SK</p>
+              <p id="cetak-sk" class="text-2xl font-bold">0</p>
+            </div>
           </div>
-          <div id="table-body" class="space-y-2 md:space-y-0">
-            <!-- Data will be injected here by JavaScript -->
+          <div class="flex-shrink-0">
+            <div class="pie"><span id="percentage-text">0</span>%</div>
           </div>
-          <p id="no-data" class="text-center p-8 text-gray-500 hidden">
-            Instansi tidak ditemukan.
+        </div>
+
+        <!-- Tabel Data Instansi -->
+        <div class="bg-white p-6 rounded-2xl shadow-lg">
+          <h3 class="text-2xl font-bold mb-4 text-slate-700">
+            Progress per Instansi
+          </h3>
+          <div class="mb-4">
+            <input
+              type="text"
+              id="searchInput"
+              class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+              placeholder="Cari berdasarkan nama instansi..."
+            />
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="min-w-full bg-white responsive-table">
+              <thead class="bg-gray-800 text-white">
+                <tr>
+                  <th
+                    class="py-3 px-4 uppercase font-semibold text-sm text-left"
+                  >
+                    Instansi
+                  </th>
+                  <th class="py-3 px-4 uppercase font-semibold text-sm">
+                    Proses
+                  </th>
+                  <th class="py-3 px-4 uppercase font-semibold text-sm">BTS</th>
+                  <th class="py-3 px-4 uppercase font-semibold text-sm">TMS</th>
+                  <th class="py-3 px-4 uppercase font-semibold text-sm">ACC</th>
+                  <th class="py-3 px-4 uppercase font-semibold text-sm">
+                    Total
+                  </th>
+                  <th class="py-3 px-4 uppercase font-semibold text-sm">
+                    Cetak SK
+                  </th>
+                  <th class="py-3 px-4 uppercase font-semibold text-sm">
+                    % Selesai
+                  </th>
+                </tr>
+              </thead>
+              <tbody id="instansiTable" class="text-gray-700">
+                <!-- Data akan diisi oleh JavaScript -->
+              </tbody>
+            </table>
+          </div>
+          <p class="text-sm text-slate-500 mt-4">
+            * Keterangan: Instansi tidak memiliki formasi PPPK Tahap II
           </p>
         </div>
       </main>
 
       <!-- Footer -->
-      <footer class="text-center mt-8 text-sm text-gray-500">
-        <p>created ops wtg 1 &copy; <span id="footerYear"></span></p>
+      <footer class="text-center mt-12 text-slate-500 text-sm">
+        <p>
+          Created OPS WTG 1 &copy; <span id="currentYear"></span>. Hak Cipta
+          Dilindungi.
+        </p>
+        <div class="flex justify-center space-x-4 mt-2">
+          <a href="#" class="hover:text-red-600">Info PPPK Tahap 2</a>
+          <a href="#" class="hover:text-red-600"
+            >Sumber Data Kantor Regional 2</a
+          >
+        </div>
       </footer>
     </div>
 
     <script>
-      const data = [
-        {
-          instansi: "Pemkab Sumenep",
-          proses: 0,
-          bts: 0,
-          tms: 0,
-          acc: 167,
-          total: 167,
-          persen: "100%",
-        },
-        {
-          instansi: "Pemkab Bondowoso",
-          proses: 0,
-          bts: 0,
-          tms: 0,
-          acc: 38,
-          total: 38,
-          persen: "100%",
-        },
-        {
-          instansi: "Pemkab Banyuwangi",
-          proses: 0,
-          bts: 0,
-          tms: 0,
-          acc: 66,
-          total: 66,
-          persen: "100%",
-        },
-        {
-          instansi: "Pemkab Probolinggo",
-          proses: 0,
-          bts: 0,
-          tms: 0,
-          acc: 2,
-          total: 2,
-          persen: "100%",
-        },
-        {
-          instansi: "Pemkab Kediri",
-          proses: 0,
-          bts: 0,
-          tms: 0,
-          acc: 203,
-          total: 203,
-          persen: "100%",
-        },
-        {
-          instansi: "Pemkab Nganjuk",
-          proses: 0,
-          bts: 0,
-          tms: 0,
-          acc: 1,
-          total: 1,
-          persen: "100%",
-        },
-        {
-          instansi: "Pemkab Blitar",
-          proses: 0,
-          bts: 0,
-          tms: 0,
-          acc: 275,
-          total: 275,
-          persen: "100%",
-        },
-        {
-          instansi: "Pemkab Ponorogo",
-          proses: 0,
-          bts: 0,
-          tms: 0,
-          acc: 238,
-          total: 238,
-          persen: "100%",
-        },
-        {
-          instansi: "Pemkot Probolinggo",
-          proses: 0,
-          bts: 0,
-          tms: 0,
-          acc: 69,
-          total: 69,
-          persen: "100%",
-        },
-        {
-          instansi: "Pemkot Kediri",
-          proses: 0,
-          bts: 0,
-          tms: 0,
-          acc: 4,
-          total: 4,
-          persen: "100%",
-        },
-        {
-          instansi: "Pemkab Gresik",
-          proses: 0,
-          bts: 0,
-          tms: 0,
-          acc: 22,
-          total: 22,
-          persen: "100%",
-        },
-        {
-          instansi: "Pemkab Mojokerto",
-          proses: 0,
-          bts: 0,
-          tms: 0,
-          acc: 69,
-          total: 69,
-          persen: "100%",
-        },
-        {
-          instansi: "Pemkab Jombang",
-          proses: 0,
-          bts: 0,
-          tms: 0,
-          acc: 39,
-          total: 39,
-          persen: "100%",
-        },
-        {
-          instansi: "Pemkab Sampang",
-          proses: 0,
-          bts: 0,
-          tms: 0,
-          acc: 9,
-          total: 9,
-          persen: "100%",
-        },
-        {
-          instansi: "Pemkab Pamekasan",
-          proses: 0,
-          bts: 0,
-          tms: 0,
-          acc: 8,
-          total: 8,
-          persen: "100%",
-        },
-        {
-          instansi: "Pemkab Situbondo",
-          proses: 0,
-          bts: 0,
-          tms: 0,
-          acc: 7,
-          total: 7,
-          persen: "100%",
-        },
-        {
-          instansi: "Pemkab Pasuruan",
-          proses: 0,
-          bts: 0,
-          tms: 0,
-          acc: 193,
-          total: 193,
-          persen: "100%",
-        },
-        {
-          instansi: "Pemkab Lumajang",
-          proses: 0,
-          bts: 0,
-          tms: 0,
-          acc: 19,
-          total: 19,
-          persen: "100%",
-        },
-        {
-          instansi: "Pemkab Tulungagung",
-          proses: 0,
-          bts: 0,
-          tms: 0,
-          acc: 77,
-          total: 77,
-          persen: "100%",
-        },
-        {
-          instansi: "Pemkab Trenggalek",
-          proses: 0,
-          bts: 0,
-          tms: 0,
-          acc: 1329,
-          total: 1329,
-          persen: "100%",
-        },
-        {
-          instansi: "Pemkab Madiun",
-          proses: 0,
-          bts: 0,
-          tms: 0,
-          acc: 96,
-          total: 96,
-          persen: "100%",
-        },
-        {
-          instansi: "Pemkab Magetan",
-          proses: 0,
-          bts: 0,
-          tms: 0,
-          acc: 191,
-          total: 191,
-          persen: "100%",
-        },
-        {
-          instansi: "Pemkot Mojokerto",
-          proses: 0,
-          bts: 0,
-          tms: 0,
-          acc: 56,
-          total: 56,
-          persen: "100%",
-        },
-        {
-          instansi: "Pemkot Pasuruan",
-          proses: 0,
-          bts: 0,
-          tms: 0,
-          acc: 10,
-          total: 10,
-          persen: "100%",
-        },
-        {
-          instansi: "Pemkot Blitar",
-          proses: 0,
-          bts: 0,
-          tms: 0,
-          acc: 83,
-          total: 83,
-          persen: "100%",
-        },
-        {
-          instansi: "Pemkot Madiun",
-          proses: 1,
-          bts: 0,
-          tms: 0,
-          acc: 35,
-          total: 36,
-          persen: "97.22%",
-        },
-        {
-          instansi: "Pemkab Lamongan",
-          proses: 1,
-          bts: 0,
-          tms: 0,
-          acc: 1146,
-          total: 1147,
-          persen: "99.91%",
-        },
-        {
-          instansi: "Pemkab Malang",
-          proses: 5,
-          bts: 1,
-          tms: 0,
-          acc: 1932,
-          total: 1938,
-          persen: "99.69%",
-        },
-        {
-          instansi: "Pemkab Tuban",
-          proses: 0,
-          bts: 1,
-          tms: 0,
-          acc: 194,
-          total: 195,
-          persen: "99.49%",
-        },
-        {
-          instansi: "Pemkot Malang",
-          proses: 5,
-          bts: 5,
-          tms: 0,
-          acc: 1717,
-          total: 1727,
-          persen: "99.42%",
-        },
-        {
-          instansi: "Pemkab Ngawi",
-          proses: 2,
-          bts: 1,
-          tms: 0,
-          acc: 369,
-          total: 372,
-          persen: "99.19%",
-        },
-        {
-          instansi: "Pemkab Sidoarjo",
-          proses: 3,
-          bts: 1,
-          tms: 0,
-          acc: 318,
-          total: 322,
-          persen: "98.76%",
-        },
-        {
-          instansi: "Pemkot Surabaya",
-          proses: 0,
-          bts: 2,
-          tms: 0,
-          acc: 155,
-          total: 157,
-          persen: "98.73%",
-        },
-        {
-          instansi: "Pemkab Jember",
-          proses: 0,
-          bts: 1,
-          tms: 0,
-          acc: 60,
-          total: 61,
-          persen: "98.36%",
-        },
-        {
-          instansi: "Pemkab Bangkalan",
-          proses: 0,
-          bts: 1,
-          tms: 0,
-          acc: 36,
-          total: 37,
-          persen: "97.30%",
-        },
-        {
-          instansi: "Pemkab Bojonegoro",
-          proses: 4,
-          bts: 67,
-          tms: 0,
-          acc: 1307,
-          total: 1378,
-          persen: "94.85%",
-        },
-        {
-          instansi: "Pemprov Jawa Timur",
-          proses: 30,
-          bts: 35,
-          tms: 0,
-          acc: 1161,
-          total: 1226,
-          persen: "94.70%",
-        },
-        {
-          instansi: "Pemkab Pacitan",
-          proses: 0,
-          bts: 0,
-          tms: 1,
-          acc: 15,
-          total: 16,
-          persen: "93.75%",
-        },
-      ];
+      document.addEventListener("DOMContentLoaded", function () {
+        // Data Instansi
+        const instansiData = [
+          {
+            instansi: "Pemkab Sumenep",
+            proses: 0,
+            bts: 0,
+            tms: 0,
+            acc: 166,
+            total: 166,
+            cetak_sk: 165,
+            selesai: "100%",
+          },
+          {
+            instansi: "Pemkab Bondowoso",
+            proses: 0,
+            bts: 0,
+            tms: 0,
+            acc: 38,
+            total: 38,
+            cetak_sk: 0,
+            selesai: "100%",
+          },
+          {
+            instansi: "Pemkab Banyuwangi",
+            proses: 0,
+            bts: 0,
+            tms: 0,
+            acc: 66,
+            total: 66,
+            cetak_sk: 0,
+            selesai: "100%",
+          },
+          {
+            instansi: "Pemkab Probolinggo",
+            proses: 0,
+            bts: 0,
+            tms: 0,
+            acc: 2,
+            total: 2,
+            cetak_sk: 2,
+            selesai: "100%",
+          },
+          {
+            instansi: "Pemkab Kediri",
+            proses: 0,
+            bts: 0,
+            tms: 0,
+            acc: 201,
+            total: 201,
+            cetak_sk: 198,
+            selesai: "100%",
+          },
+          {
+            instansi: "Pemkab Nganjuk",
+            proses: 0,
+            bts: 0,
+            tms: 0,
+            acc: 1,
+            total: 1,
+            cetak_sk: 0,
+            selesai: "100%",
+          },
+          {
+            instansi: "Pemkab Blitar",
+            proses: 0,
+            bts: 0,
+            tms: 0,
+            acc: 275,
+            total: 275,
+            cetak_sk: 0,
+            selesai: "100%",
+          },
+          {
+            instansi: "Pemkab Ngawi",
+            proses: 0,
+            bts: 0,
+            tms: 0,
+            acc: 373,
+            total: 373,
+            cetak_sk: 368,
+            selesai: "100%",
+          },
+          {
+            instansi: "Pemkab Ponorogo",
+            proses: 0,
+            bts: 0,
+            tms: 0,
+            acc: 240,
+            total: 240,
+            cetak_sk: 238,
+            selesai: "100%",
+          },
+          {
+            instansi: "Pemkot Probolinggo",
+            proses: 0,
+            bts: 0,
+            tms: 0,
+            acc: 69,
+            total: 69,
+            cetak_sk: 69,
+            selesai: "100%",
+          },
+          {
+            instansi: "Pemkot Kediri",
+            proses: 0,
+            bts: 0,
+            tms: 0,
+            acc: 4,
+            total: 4,
+            cetak_sk: 4,
+            selesai: "100%",
+          },
+          {
+            instansi: "Pemkab Gresik",
+            proses: 0,
+            bts: 0,
+            tms: 0,
+            acc: 22,
+            total: 22,
+            cetak_sk: 22,
+            selesai: "100%",
+          },
+          {
+            instansi: "Pemkot Mojokerto",
+            proses: 0,
+            bts: 0,
+            tms: 0,
+            acc: 69,
+            total: 69,
+            cetak_sk: 69,
+            selesai: "100%",
+          },
+          {
+            instansi: "Pemkab Jombang",
+            proses: 0,
+            bts: 0,
+            tms: 0,
+            acc: 39,
+            total: 39,
+            cetak_sk: 39,
+            selesai: "100%",
+          },
+          {
+            instansi: "Pemkab Sampang",
+            proses: 0,
+            bts: 0,
+            tms: 0,
+            acc: 9,
+            total: 9,
+            cetak_sk: 9,
+            selesai: "100%",
+          },
+          {
+            instansi: "Pemkab Pamekasan",
+            proses: 0,
+            bts: 0,
+            tms: 0,
+            acc: 8,
+            total: 8,
+            cetak_sk: 8,
+            selesai: "100%",
+          },
+          {
+            instansi: "Pemkab Situbondo",
+            proses: 0,
+            bts: 0,
+            tms: 0,
+            acc: 7,
+            total: 7,
+            cetak_sk: 0,
+            selesai: "100%",
+          },
+          {
+            instansi: "Pemkab Pasuruan",
+            proses: 0,
+            bts: 0,
+            tms: 0,
+            acc: 193,
+            total: 193,
+            cetak_sk: 193,
+            selesai: "100%",
+          },
+          {
+            instansi: "Pemkab Lumajang",
+            proses: 0,
+            bts: 0,
+            tms: 0,
+            acc: 19,
+            total: 19,
+            cetak_sk: 19,
+            selesai: "100%",
+          },
+          {
+            instansi: "Pemkab Tulungagung",
+            proses: 0,
+            bts: 0,
+            tms: 0,
+            acc: 77,
+            total: 77,
+            cetak_sk: 77,
+            selesai: "100%",
+          },
+          {
+            instansi: "Pemkab Trenggalek",
+            proses: 0,
+            bts: 0,
+            tms: 0,
+            acc: 1329,
+            total: 1329,
+            cetak_sk: 1329,
+            selesai: "100%",
+          },
+          {
+            instansi: "Pemkab Madiun",
+            proses: 0,
+            bts: 0,
+            tms: 0,
+            acc: 96,
+            total: 96,
+            cetak_sk: 0,
+            selesai: "100%",
+          },
+          {
+            instansi: "Pemkab Magetan",
+            proses: 0,
+            bts: 0,
+            tms: 0,
+            acc: 191,
+            total: 191,
+            cetak_sk: 191,
+            selesai: "100%",
+          },
+          {
+            instansi: "Pemkab Tuban",
+            proses: 0,
+            bts: 0,
+            tms: 0,
+            acc: 195,
+            total: 195,
+            cetak_sk: 0,
+            selesai: "100%",
+          },
+          {
+            instansi: "Pemkot Mojokerto",
+            proses: 0,
+            bts: 0,
+            tms: 0,
+            acc: 56,
+            total: 56,
+            cetak_sk: 0,
+            selesai: "100%",
+          },
+          {
+            instansi: "Pemkot Pasuruan",
+            proses: 0,
+            bts: 0,
+            tms: 0,
+            acc: 10,
+            total: 10,
+            cetak_sk: 10,
+            selesai: "100%",
+          },
+          {
+            instansi: "Pemkot Blitar",
+            proses: 0,
+            bts: 0,
+            tms: 0,
+            acc: 83,
+            total: 83,
+            cetak_sk: 0,
+            selesai: "100%",
+          },
+          {
+            instansi: "Pemkot Madiun",
+            proses: 0,
+            bts: 0,
+            tms: 0,
+            acc: 36,
+            total: 36,
+            cetak_sk: 35,
+            selesai: "100%",
+          },
+          {
+            instansi: "Pemkab Malang",
+            proses: 0,
+            bts: 1,
+            tms: 0,
+            acc: 1940,
+            total: 1941,
+            cetak_sk: 0,
+            selesai: "99.95%",
+          },
+          {
+            instansi: "Pemkab Lamongan",
+            proses: 1,
+            bts: 2,
+            tms: 0,
+            acc: 1144,
+            total: 1147,
+            cetak_sk: 0,
+            selesai: "99.74%",
+          },
+          {
+            instansi: "Pemkab Sidoarjo",
+            proses: 0,
+            bts: 1,
+            tms: 0,
+            acc: 321,
+            total: 322,
+            cetak_sk: 0,
+            selesai: "99.69%",
+          },
+          {
+            instansi: "Pemkot Malang",
+            proses: 3,
+            bts: 4,
+            tms: 0,
+            acc: 1726,
+            total: 1733,
+            cetak_sk: 1724,
+            selesai: "99.60%",
+          },
+          {
+            instansi: "Pemkot Surabaya",
+            proses: 0,
+            bts: 1,
+            tms: 0,
+            acc: 156,
+            total: 157,
+            cetak_sk: 155,
+            selesai: "99.36%",
+          },
+          {
+            instansi: "Pemkab Jember",
+            proses: 0,
+            bts: 1,
+            tms: 0,
+            acc: 60,
+            total: 61,
+            cetak_sk: 0,
+            selesai: "98.36%",
+          },
+          {
+            instansi: "Pemkab Bangkalan",
+            proses: 1,
+            bts: 0,
+            tms: 0,
+            acc: 37,
+            total: 38,
+            cetak_sk: 0,
+            selesai: "97.37%",
+          },
+          {
+            instansi: "Pemprov Jawa Timur",
+            proses: 9,
+            bts: 36,
+            tms: 0,
+            acc: 1183,
+            total: 1228,
+            cetak_sk: 0,
+            selesai: "96.34%",
+          },
+          {
+            instansi: "Pemkab Bojonegoro",
+            proses: 0,
+            bts: 67,
+            tms: 0,
+            acc: 1312,
+            total: 1379,
+            cetak_sk: 0,
+            selesai: "95.14%",
+          },
+          {
+            instansi: "Pemkab Pacitan",
+            proses: 2,
+            bts: 0,
+            tms: 1,
+            acc: 13,
+            total: 16,
+            cetak_sk: 13,
+            selesai: "81.25%",
+          },
+          {
+            instansi: "Pemkot Batu*",
+            proses: "-",
+            bts: "-",
+            tms: "-",
+            acc: "-",
+            total: "-",
+            cetak_sk: "-",
+            selesai: "-",
+          },
+        ];
 
-      const tableBody = document.getElementById("table-body");
-      const searchInput = document.getElementById("searchInput");
-      const noDataP = document.getElementById("no-data");
-
-      function renderData(dataToRender) {
-        tableBody.innerHTML = ""; // Clear existing data
-
-        if (dataToRender.length === 0) {
-          noDataP.classList.remove("hidden");
-        } else {
-          noDataP.classList.add("hidden");
-        }
-
-        dataToRender.forEach((item) => {
+        // 1. Fungsi untuk mengisi tabel
+        const tableBody = document.getElementById("instansiTable");
+        instansiData.forEach((item) => {
           const row = `
-                    <!-- Vertical Card for Mobile -->
-                    <div class="md:hidden bg-white border border-gray-200 rounded-lg p-4 grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
-                        <div class="col-span-2 font-bold text-base text-blue-700">${
+                    <tr class="border-b border-gray-200 hover:bg-gray-100">
+                        <td data-label="Instansi" class="py-3 px-4 text-left">${
                           item.instansi
-                        }</div>
-                        
-                        <div class="text-gray-600">Proses</div><div class="font-medium text-right">${
+                        }</td>
+                        <td data-label="Proses" class="py-3 px-4 text-center">${
                           item.proses
-                        }</div>
-                        <div class="text-gray-600">BTS</div><div class="font-medium text-right">${
+                        }</td>
+                        <td data-label="BTS" class="py-3 px-4 text-center">${
                           item.bts
-                        }</div>
-                        <div class="text-gray-600">TMS</div><div class="font-medium text-right">${
+                        }</td>
+                        <td data-label="TMS" class="py-3 px-4 text-center">${
                           item.tms
-                        }</div>
-                        <div class="text-gray-600">ACC</div><div class="font-medium text-right">${
-                          item.acc
-                        }</div>
-                        <div class="text-gray-600">Total</div><div class="font-medium text-right">${
-                          item.total
-                        }</div>
-                        
-                        <div class="col-span-2 mt-2 pt-2 border-t text-center">
-                            <span class="font-bold text-green-600 text-lg">${
-                              item.persen
-                            }</span>
-                        </div>
-                    </div>
-
-                    <!-- Horizontal Row for Desktop -->
-                    <div class="hidden md:grid md:grid-cols-8 gap-4 items-center p-4 border-b border-gray-200 hover:bg-gray-50 text-sm">
-                        <div class="col-span-2 font-semibold text-gray-900">${
-                          item.instansi
-                        }</div>
-                        <div class="text-center">${item.proses}</div>
-                        <div class="text-center">${item.bts}</div>
-                        <div class="text-center">${item.tms}</div>
-                        <div class="text-center">${item.acc}</div>
-                        <div class="text-center">${item.total}</div>
-                        <div class="text-center">
-                            <span class="px-2 py-1 text-xs font-semibold rounded-full ${
-                              parseFloat(item.persen) === 100
-                                ? "bg-green-100 text-green-800"
-                                : "bg-blue-100 text-blue-800"
-                            }">
-                                ${item.persen}
-                            </span>
-                        </div>
-                    </div>
+                        }</td>
+                        <td data-label="ACC" class="py-3 px-4 text-center">${item.acc.toLocaleString(
+                          "id-ID"
+                        )}</td>
+                        <td data-label="Total" class="py-3 px-4 text-center">${item.total.toLocaleString(
+                          "id-ID"
+                        )}</td>
+                        <td data-label="Cetak SK" class="py-3 px-4 text-center">${item.cetak_sk.toLocaleString(
+                          "id-ID"
+                        )}</td>
+                        <td data-label="% Selesai" class="py-3 px-4 text-center"><span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full">${
+                          item.selesai
+                        }</span></td>
+                    </tr>
                 `;
           tableBody.innerHTML += row;
         });
-      }
 
-      searchInput.addEventListener("keyup", (e) => {
-        const searchTerm = e.target.value.toLowerCase();
-        const filteredData = data.filter((item) =>
-          item.instansi.toLowerCase().includes(searchTerm)
-        );
-        renderData(filteredData);
+        // 2. Fungsi pencarian
+        const searchInput = document.getElementById("searchInput");
+        searchInput.addEventListener("keyup", function () {
+          const filter = searchInput.value.toUpperCase();
+          const rows = tableBody.getElementsByTagName("tr");
+          for (let i = 0; i < rows.length; i++) {
+            let cell = rows[i].getElementsByTagName("td")[0];
+            if (cell) {
+              let textValue = cell.textContent || cell.innerText;
+              if (textValue.toUpperCase().indexOf(filter) > -1) {
+                rows[i].style.display = "";
+              } else {
+                rows[i].style.display = "none";
+              }
+            }
+          }
+        });
+
+        // 3. Animasi Hitung Angka
+        function animateValue(element, start, end, duration) {
+          if (!element) return;
+          let startTimestamp = null;
+          const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min(
+              (timestamp - startTimestamp) / duration,
+              1
+            );
+            const currentValue = Math.floor(progress * (end - start) + start);
+            element.innerHTML = currentValue.toLocaleString("id-ID");
+            if (progress < 1) {
+              window.requestAnimationFrame(step);
+            }
+          };
+          window.requestAnimationFrame(step);
+        }
+
+        // Elemen target dan nilai akhir
+        const dataToAnimate = {
+          proses: 16,
+          bts: 113,
+          tms: 1,
+          acc: 11766,
+          total: 11896,
+          "cetak-sk": 4937,
+        };
+
+        setTimeout(() => {
+          for (const [id, value] of Object.entries(dataToAnimate)) {
+            animateValue(document.getElementById(id), 0, value, 2000);
+          }
+
+          // Animasi persentase
+          const percentageTextEl = document.getElementById("percentage-text");
+          const targetPercentage = 98.91;
+          let startTime = null;
+          function animatePercentage(timestamp) {
+            if (!startTime) startTime = timestamp;
+            const progress = (timestamp - startTime) / 2000;
+            const currentPercentage = Math.min(
+              progress * targetPercentage,
+              targetPercentage
+            );
+            percentageTextEl.textContent = currentPercentage.toFixed(2);
+            if (progress < 1) {
+              requestAnimationFrame(animatePercentage);
+            } else {
+              percentageTextEl.textContent = targetPercentage.toString();
+            }
+          }
+          requestAnimationFrame(animatePercentage);
+        }, 500);
+
+        // 4. Set Tahun berjalan di Footer
+        document.getElementById("currentYear").textContent =
+          new Date().getFullYear();
       });
-
-      // Set current year in footer
-      document.getElementById("footerYear").textContent =
-        new Date().getFullYear();
-
-      // Initial render
-      renderData(data);
     </script>
   </body>
 </html>
